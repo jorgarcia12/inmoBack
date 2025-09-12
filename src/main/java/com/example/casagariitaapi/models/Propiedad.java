@@ -82,9 +82,15 @@ public class Propiedad extends BaseModel {
     private List<ImagenPropiedad> imagenes = new ArrayList<>();
 
 
-
     @PrePersist
     public void prePersist() {
         this.fechaCreacion = LocalDateTime.now();
+        this.fechaModificacion = LocalDateTime.now(); // inicializa al crear
+        this.fechaPublicacion = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.fechaModificacion = LocalDateTime.now(); // cada vez que se actualice
     }
 }
