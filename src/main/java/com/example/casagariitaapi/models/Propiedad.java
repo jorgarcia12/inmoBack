@@ -73,6 +73,33 @@ public class Propiedad extends BaseModel {
     @Column(name = "tipo_propiedad")
     private TipoPropiedad tipoPropiedad;
 
+    @Column(name = "publicada", nullable = false)
+    private boolean publicada = false;
+
+    @Column(name = "patio")
+    private Boolean patio = false;
+
+    @Column(name = "cochera")
+    private Boolean cochera = false;
+
+    @Column(name = "permuta")
+    private Boolean permuta = false;
+
+    @Column(name = "servicios")
+    private Boolean servicios = false;
+
+    @Column(name = "amoblado")
+    private Boolean amoblado = false;
+
+    @Column(name = "pileta")
+    private Boolean pileta = false;
+
+    @Column(name = "apt_prof")
+    private Boolean aptProf = false;
+
+    @Column(name = "barrio_priv")
+    private Boolean barrioPriv = false;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "direccion_id", referencedColumnName = "id")
