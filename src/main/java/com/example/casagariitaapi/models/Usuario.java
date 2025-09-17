@@ -20,16 +20,23 @@ public class Usuario extends BaseModel {
 
     @Column(name = "nombre")
     private String nombre;
+
     @Column(name = "apellido")
     private String apellido;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "telefono")
     private String telefono;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "rol")
     private Rol rol;
+
+    @Column(name = "nombre_usuario")
+    private String username;
+
     private String password;
     @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;

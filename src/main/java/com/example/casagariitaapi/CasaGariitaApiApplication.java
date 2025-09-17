@@ -8,6 +8,10 @@ public class CasaGariitaApiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CasaGariitaApiApplication.class, args);
+
+
+
     }
+
 
 }
