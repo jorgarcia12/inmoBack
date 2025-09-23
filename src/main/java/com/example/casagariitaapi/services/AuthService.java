@@ -25,7 +25,6 @@ public class AuthService {
     }
 
     //    LOGIN
-    // AuthService
     public LoginResponse login(String username, String password) {
         Usuario user = usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -35,7 +34,7 @@ public class AuthService {
         }
 
         String token = jwtUtil.generateToken(user.getUsername());
-        return new LoginResponse(token, user);  // <-- LoginResponse, no Usuario
+        return new LoginResponse(token, user);
     }
 
 

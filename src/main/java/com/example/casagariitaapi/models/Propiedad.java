@@ -112,12 +112,12 @@ public class Propiedad extends BaseModel {
     @PrePersist
     public void prePersist() {
         this.fechaCreacion = LocalDateTime.now();
-        this.fechaModificacion = LocalDateTime.now(); // inicializa al crear
+        this.fechaModificacion = LocalDateTime.now();
         this.fechaPublicacion = LocalDateTime.now();
     }
 
     @PreUpdate
     public void preUpdate() {
-        this.fechaModificacion = LocalDateTime.now(); // cada vez que se actualice
+        this.fechaModificacion = LocalDateTime.now();
     }
 }
