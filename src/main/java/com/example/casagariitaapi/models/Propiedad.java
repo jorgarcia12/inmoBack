@@ -62,6 +62,7 @@ public class Propiedad extends BaseModel {
     @Column(name = "fecha_publicacion")
     private LocalDateTime fechaPublicacion;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo_operacion")
     private TipoOperacion tipoOperacion;
 

@@ -3,6 +3,7 @@ package com.example.casagariitaapi.services;
 import com.example.casagariitaapi.models.ImagenPropiedad;
 import com.example.casagariitaapi.repositories.ImagenPropiedadRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,7 +34,11 @@ public class ImagenPropiedadService extends BaseService<ImagenPropiedad> {
     /**
      * Eliminar una imagen de propiedad por su ID.
      */
+    @Transactional
     public void eliminarImagen(Long id) {
-        super.deleteById(id); // usa el deleteById del BaseService
+        ImagenPropiedad imagen = imagenPropiedadRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Imagen no encontrada"));
+        imagenPropiedadRepository.delete(imagen);
     }
+
 }

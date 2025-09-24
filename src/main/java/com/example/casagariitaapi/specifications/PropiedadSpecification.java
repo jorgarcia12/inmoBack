@@ -52,8 +52,21 @@ public class PropiedadSpecification {
                 predicates.add(cb.equal(root.get("tipoOperacion"), tipoOperacion));
             }
 
-            if (tipoPropiedad != null) {
-                predicates.add(cb.equal(root.get("tipoPropiedad"), tipoPropiedad));
+            if (tipoOperacion != null) {
+                if (tipoOperacion == TipoOperacion.AMBOS) {
+                    // Si el filtro es AMBOS, devolvemos propiedades que sean VENTA, ALQUILER o AMBOS
+                    predicates.add(cb.or(
+                            cb.equal(root.get("tipoOperacion"), TipoOperacion.VENTA),
+                            cb.equal(root.get("tipoOperacion"), TipoOperacion.ALQUILER),
+                            cb.equal(root.get("tipoOperacion"), TipoOperacion.AMBOS)
+                    ));
+                } else {
+                    // Si el filtro es VENTA o ALQUILER, devolvemos propiedades que sean ese tipo o AMBOS
+                    predicates.add(cb.or(
+                            cb.equal(root.get("tipoOperacion"), tipoOperacion),
+                            cb.equal(root.get("tipoOperacion"), TipoOperacion.AMBOS)
+                    ));
+                }
             }
 
             if (estado != null) {
