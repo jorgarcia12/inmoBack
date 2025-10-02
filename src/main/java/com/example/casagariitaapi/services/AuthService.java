@@ -18,15 +18,14 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
 
-
-    //    REGISTER
+    // REGISTER
     public Usuario register(Usuario usuario) {
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuario.setFechaAlta(java.time.LocalDateTime.now());
         return usuarioRepository.save(usuario);
     }
 
-    //    LOGIN
+    // LOGIN
     public LoginResponse login(String username, String password) {
         Usuario user = usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
@@ -38,6 +37,5 @@ public class AuthService {
         String token = jwtUtil.generateToken(user.getUsername());
         return new LoginResponse(token, user);
     }
-
-
 }
+

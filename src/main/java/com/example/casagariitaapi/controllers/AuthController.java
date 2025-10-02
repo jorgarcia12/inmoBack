@@ -27,5 +27,4 @@ public class AuthController {
         LoginResponse response = authService.login(usuario.getUsername(), usuario.getPassword());
         return ResponseEntity.ok(response);
     }
-
 }
