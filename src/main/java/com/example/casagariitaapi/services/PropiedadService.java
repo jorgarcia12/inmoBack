@@ -52,7 +52,8 @@ public class PropiedadService extends BaseService<Propiedad> {
         existente.setTipoPropiedad(nuevaPropiedad.getTipoPropiedad());
         existente.setDireccion(nuevaPropiedad.getDireccion());
         existente.setPublicada(nuevaPropiedad.isPublicada());
-
+        existente.setDivisa(nuevaPropiedad.getDivisa());
+        
         if (nuevaPropiedad.getImagenes() != null && !nuevaPropiedad.getImagenes().isEmpty()) {
             nuevaPropiedad.getImagenes().forEach(img -> img.setPropiedad(existente));
             existente.getImagenes().addAll(nuevaPropiedad.getImagenes());
@@ -113,7 +114,6 @@ public class PropiedadService extends BaseService<Propiedad> {
 
         return propiedadRepository.findAll(spec);
     }
-
 
 
 }
