@@ -23,8 +23,8 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/auth/**").permitAll()
-                        .requestMatchers("/propiedades/**","/propiedad/**").permitAll()
-                        .requestMatchers("/usuarios/**","/usuario/**").hasRole("ADMIN")
+                        .requestMatchers("/propiedades/**", "/propiedad/**").permitAll()
+                        .requestMatchers("/usuarios/**", "/usuario/**").hasRole("ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
@@ -37,7 +37,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+        configuration.setAllowedOrigins(List.of(
+                "https://www.casagaritaonandia.com",
+                "https://casagaritaonandia.com",
+                "http://localhost:5173"
+        ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
