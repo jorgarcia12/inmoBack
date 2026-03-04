@@ -9,6 +9,7 @@ import com.example.casagariitaapi.repositories.PropiedadRepository;
 
 
 import com.example.casagariitaapi.specifications.PropiedadSpecification;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
-
+@Slf4j
 @Service
 public class PropiedadService extends BaseService<Propiedad> {
 
@@ -36,6 +37,9 @@ public class PropiedadService extends BaseService<Propiedad> {
 
     @Transactional
     public Propiedad actualizarPropiedad(Long id, Propiedad nuevaPropiedad) {
+        log.info("Actualizando propiedad ID: {}", id);
+        log.info("Divisa recibida: {}", nuevaPropiedad.getDivisa());
+        log.info("Precio recibido: {}", nuevaPropiedad.getPrecio());
         Propiedad existente = propiedadRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Propiedad no encontrada"));
 
@@ -52,6 +56,7 @@ public class PropiedadService extends BaseService<Propiedad> {
         existente.setTipoPropiedad(nuevaPropiedad.getTipoPropiedad());
         existente.setDireccion(nuevaPropiedad.getDireccion());
         existente.setPublicada(nuevaPropiedad.isPublicada());
+        existente.setDivisa(nuevaPropiedad.getDivisa());
 
         if (nuevaPropiedad.getImagenes() != null && !nuevaPropiedad.getImagenes().isEmpty()) {
             nuevaPropiedad.getImagenes().forEach(img -> img.setPropiedad(existente));
@@ -113,7 +118,6 @@ public class PropiedadService extends BaseService<Propiedad> {
 
         return propiedadRepository.findAll(spec);
     }
-
 
 
 }

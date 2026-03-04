@@ -51,6 +51,10 @@ public class PropiedadSpecification {
             if (tipoOperacion != null) {
                 predicates.add(cb.equal(root.get("tipoOperacion"), tipoOperacion));
             }
+            if (tipoPropiedad != null) {
+                predicates.add(cb.equal(root.get("tipoPropiedad"), tipoPropiedad));
+            }
+
 
             if (tipoOperacion != null) {
                 if (tipoOperacion == TipoOperacion.AMBOS) {

@@ -18,7 +18,7 @@ public class ImagenPropiedadController extends BaseController<ImagenPropiedad> {
         this.imagenPropiedadService = imagenPropiedadService;
     }
 
-    // Endpoint para eliminar imagen por ID
+
     @Override
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

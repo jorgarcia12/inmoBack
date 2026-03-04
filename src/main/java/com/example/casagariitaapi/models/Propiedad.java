@@ -1,5 +1,6 @@
 package com.example.casagariitaapi.models;
 
+import com.example.casagariitaapi.models.Enums.Divisa;
 import com.example.casagariitaapi.models.Enums.Estado;
 import com.example.casagariitaapi.models.Enums.TipoOperacion;
 import com.example.casagariitaapi.models.Enums.TipoPropiedad;
@@ -101,6 +102,9 @@ public class Propiedad extends BaseModel {
     @Column(name = "barrio_priv")
     private Boolean barrioPriv = false;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "divisa")
+    private Divisa divisa;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "direccion_id", referencedColumnName = "id")
